@@ -6,7 +6,6 @@
  */
 int main(void)
 {
-	_print("Simple Shell (press \"exit\" to quit)\n");
 	while (1)
 	{
 		_tokenizer(_get_command());

@@ -8,7 +8,7 @@ This Unix Shell Program is a simple command-line interface (CLI) tool that allow
 
 ### Installation
 
-To use the Unix Shell Program, no installation is required. Simply open your terminal and clone this repository for compilation. Then go on and run the shell to start the prompt indefinitely.
+To use the Unix Shell Program, no installation is required. Simply open your terminal and clone this repository for compilation. Then go on and run the shell to start the prompt indefinitely.<br>
 ``sh
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ``
@@ -65,7 +65,7 @@ exit
 Contributions to this project are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request.
 
 ## Authors
-Mustorpha Jamiu
+Mustorpha Jamiu<br>
 Victor Ukpongette
 
 ## License
@@ -74,5 +74,4 @@ This program is open-source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or issues, please contact [Mustorpha] @ [mustorphajamiu@gmail.com] OR [MrVeeJon] @ [sirviczo123@gmail.com]
-```
+For any questions or issues, please contact Mustorpha @ [mustorphajamiu@gmail.com] OR MrVeeJon @ [sirviczo123@gmail.com]

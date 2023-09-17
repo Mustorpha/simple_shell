@@ -13,13 +13,22 @@
 #include <sys/stat.h>
 #include <errno.h>
 
+#define MAX_INPUT_SIZE 1024
+
+extern char **environ;
+
 char *_get_command();
 int _tokenizer(char *str);
-int _execute(char **exe);
 void _print(char *str);
+void _printerr(char *str);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
+int wcnt(const char *s);
+char *_strcpy(char *dest, char *src);
+char *_getenv(char *name);
+void _execute_path(char *command, char **args);
+char *_strdup(char *src);
 
 /* SHELL HEADER  */
 

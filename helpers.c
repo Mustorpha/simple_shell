@@ -27,23 +27,17 @@ int _strlen(char *s)
  */
 char *_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	char *original;
 
-	i = 0;
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
-	j = 0;
-
-	while (src[j])
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	return (dest);
+	original = dest;
+	
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	
+	return (original);
 }
 
 /**
@@ -64,4 +58,58 @@ int _strcmp(char *s1, char *s2)
 	if (s1 != s2)
 		val = *s1 - *s2;
 	return (val);
+}
+
+
+/**
+ * *_strcpy - copies the string pointed to by src
+ * including the terminating null byte (\0)
+ * to the buffer pointed to by dest
+ * @dest: pointer to the buffer in which we copy the string
+ * @src: string to be copied
+ *
+ * Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int len, i;
+
+	len = 0;
+
+	while (src[len] != '\0')
+	{
+		len++;
+	}
+
+	for (i = 0; i < len; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+
+	return (dest);
+}
+
+/**
+ * _strdup - duplicates a string
+ * @src: the source string
+ * Return: pointer to the duplicate
+ */
+char *_strdup(char *src)
+{
+	char *dest;
+	int len;
+
+	if (src == NULL)
+		return (NULL);
+	len = _strlen(src);
+	dest = (char *)malloc(len + 1);
+
+	if (dest == NULL)
+	{
+		perror("Error: ");
+		exit(EXIT_FAILURE);
+	}
+	_strcpy(dest, src);
+	return (dest);
 }

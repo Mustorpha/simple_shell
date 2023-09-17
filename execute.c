@@ -1,21 +1,30 @@
 #include "shell.h"
 
 /**
- * _execute - execute shell commands
- * @exe: a pointer to the of command
- * Return: 0 (success) 1 (failed)
+ * _execute_path - execute command using path
+ * @command: pointer to command requested command
+ * @args: pointer to the array of commands
+ * Return: void
  */
-int _execute(char **exe)
+void _execute_path(char *command, char **args)
 {
-	char *buff[2];
+	char *path;
+	char *path_copy;
+	char *token;
+	char cmd_path[MAX_INPUT_SIZE];
 
-	buff[0] = *exe;
-	buff[1] = NULL;
+	path = _getenv("PATH");
+	path_copy = _strdup(path);
+	token = strtok(path_copy, ":");
 
-	if (execve(exe[0], buff, '\0') == -1)
+	while (token != NULL)
 	{
-		perror("Error: \n");
-		return (1);
+		_strcpy(cmd_path, token);
+		strcat(cmd_path, "/");
+		strcat(cmd_path, command);
+		execve(cmd_path, args, NULL);
+		token = strtok(NULL, ":");
 	}
-	return (1);
+	_printerr("No such file or directory\n");
+	free(path_copy);
 }
