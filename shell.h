@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <signal.h>
 
 #define MAX_INPUT_SIZE 1024
 
@@ -29,6 +30,7 @@ char *_strcpy(char *dest, char *src);
 char *_getenv(char *name);
 void _execute_path(char *command, char **args);
 char *_strdup(char *src);
+void _terminate(pid_t process);
 
 /* SHELL HEADER  */
 

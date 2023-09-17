@@ -60,6 +60,8 @@ int _tokenizer(char *str)
 
 	cnt = wcnt(str);
 	token = strtok(str, " ");
+	if (!(_strcmp(token, "exit")))
+		_terminate(getpid());
 	arg = malloc(sizeof(char *) * (cnt + 1));
 
 	if (!arg)
