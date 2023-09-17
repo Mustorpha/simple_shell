@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * wnct - counts the number of words in a string
+ * wcnt - counts the number of words in a string
  * @s: the target string
  * Return: count number
  */
@@ -60,8 +60,8 @@ int _tokenizer(char *str)
 
 	cnt = wcnt(str);
 	token = strtok(str, " ");
-	if (!(_strcmp(token, "exit")))
-		_terminate(getpid());
+	if (builtin_handler(token))
+		return (0);
 	arg = malloc(sizeof(char *) * (cnt + 1));
 
 	if (!arg)

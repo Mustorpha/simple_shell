@@ -31,6 +31,7 @@ char *_getenv(char *name);
 void _execute_path(char *command, char **args);
 char *_strdup(char *src);
 void _terminate(pid_t process);
+int builtin_handler(char *command);
 
 /* SHELL HEADER  */
 
