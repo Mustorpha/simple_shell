@@ -58,7 +58,7 @@ int _tokenizer(char *str)
 	pid_t exe_process;
 
 	cnt = wcnt(str);
-	token = strtok(str, " ");
+	token = _strtok(str, " ");
 	if (builtin_handler(token))
 		return (0);
 	arg = malloc(sizeof(char *) * (cnt + 1));
@@ -72,7 +72,7 @@ int _tokenizer(char *str)
 	while (token != NULL)
 	{
 		arg[ind++] = token;
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 	}
 	arg[ind] = NULL;
 
@@ -140,4 +140,42 @@ ssize_t _getline(char **buff, size_t *n, int fd)
 	}
 	*buff = buffer;
 	return (index);
+}
+
+/**
+ * _strtok - splits a string into parts
+ * @str: pointer to the string
+ * @delim: preffered delimeter
+ * Return: string part in order
+ */
+char *_strtok(char *str, const char *delim)
+{
+	static char *lastToken = NULL;
+	char *token;
+	char *delimPtr;
+
+	if (str != NULL)
+		lastToken = str;
+	else if (lastToken == NULL)
+		return (NULL);
+	token = lastToken;
+
+	while (*lastToken)
+	{
+		delimPtr = (char *)delim;
+
+		while (*delimPtr)
+		{
+			if (*lastToken == *delimPtr)
+			{
+				*lastToken = '\0';
+				lastToken++;
+				return (token);
+			}
+			delimPtr++;
+		}
+		lastToken++;
+	}
+	lastToken = NULL;
+	return (token);
 }
