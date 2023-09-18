@@ -7,8 +7,6 @@
  */
 int builtin_handler(char  *command)
 {
-	int ind;
-
 	if (!(_strcmp(command, "exit")))
 	{
 		_terminate(getpid());
@@ -16,12 +14,7 @@ int builtin_handler(char  *command)
 	}
 	if (!(_strcmp(command, "env")))
 	{
-		for (ind  = 0; environ[ind] != NULL; ind++)
-		{
-			_print(environ[ind]);
-			_print("\n");
-		}
-		return (1);
+		return (_env());
 	}
 	return (0);
 }
@@ -33,5 +26,21 @@ int builtin_handler(char  *command)
  */
 void _terminate(pid_t process)
 {
-	kill(process, SIGINT);
+	exit(process);
+}
+
+/**
+ * _env - prints out the enviroment variables
+ * Return: number of varibles read
+ */
+int _env(void)
+{
+	int ind;
+
+	for (ind  = 0; environ[ind] != NULL; ind++)
+	{
+		_print(environ[ind]);
+		_print("\n");
+	}
+	return (ind);
 }

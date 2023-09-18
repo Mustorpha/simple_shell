@@ -30,8 +30,7 @@ char *_get_command(void)
 	size_t buff_size;
 	ssize_t len;
 
-	printf("$ ");
-	len = getline(&buff, &buff_size, stdin);
+	len = _getline(&buff, &buff_size, STDIN_FILENO);
 
 	if (len == -1)
 	{
@@ -90,4 +89,55 @@ int _tokenizer(char *str)
 		wait(&exe_process);
 	}
 	return (0);
+}
+
+/**
+ * _getline - gets the user input from the terminal
+ * @buff: pointer to the extracted command string
+ * @n: size of charaters extracted
+ * @fd: file descriptor of the source
+ * Return: number of character extracted
+ */
+ssize_t _getline(char **buff, size_t *n, int fd)
+{
+	size_t index = 0;
+	char c;
+	ssize_t result;
+	char *buffer;
+
+	*n = 64;
+	if (buff == NULL || n == NULL || fd < 0)
+		return (-1);
+	buffer = (char *)malloc(*n);
+	if (buffer == NULL)
+		return (-1);
+	while (1)
+	{
+		result = read(fd, &c, 1);
+		if (result < 0)
+		{
+			free(buffer);
+			return (-1);
+		}
+		if (result == 0 || c == '\n')
+		{
+			buffer[index] = '\0';
+			break;
+		}
+		else
+			buffer[index] = c;
+		index++;
+		if (index >= *n - 1)
+		{
+			*n *= 2;
+			buffer = (char *)realloc(buffer, *n);
+			if (buffer == NULL)
+			{
+				free(buffer);
+				return (-1);
+			}
+		}
+	}
+	*buff = buffer;
+	return (index);
 }

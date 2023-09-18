@@ -31,7 +31,9 @@ char *_getenv(char *name);
 void _execute_path(char *command, char **args);
 char *_strdup(char *src);
 void _terminate(pid_t process);
+int _env(void);
 int builtin_handler(char *command);
+ssize_t _getline(char **buff, size_t *n, int fd);
 
 /* SHELL HEADER  */
 

@@ -12,7 +12,7 @@ void _print(char *str)
 }
 
 /**
- * _print - prints a string to the standard error
+ * _printerr - prints a string to the standard error
  * @str: the output error message
  * Return: void
  */
