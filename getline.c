@@ -150,10 +150,11 @@ ssize_t _getline(char **buff, size_t *n, int fd)
  */
 char *_strtok(char *str, const char *delim)
 {
-	static char *lastToken = NULL;
+	static char *lastToken;
 	char *token;
 	char *delimPtr;
 
+	lastToken = NULL;
 	if (str != NULL)
 		lastToken = str;
 	else if (lastToken == NULL)
