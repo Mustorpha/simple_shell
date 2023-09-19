@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _strlen - analyse the total numbr of character in a string
- * @s: a pointer to the string
- * Return: the number of chracter
+ * _strlen - analyses the total numbr of characters contained in a string
+ * @s: serves as a pointer to the string
+ * Return: the number of chracters
  */
 int _strlen(char *s)
 {
@@ -21,9 +21,9 @@ int _strlen(char *s)
 
 /**
  * _strcat - concantenates two strings
- * @dest: the destination string
- * @src: the source string
- * Return: the full string
+ * @dest: this is destination string
+ * @src: this is source string
+ * Return: this is full string
  */
 char *_strcat(char *dest, char *src)
 {
@@ -41,10 +41,10 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _strcmp - function that compares two strings
- * @s1: the first string
- * @s2: the second string
- * Return: the value from comparism
+ * _strcmp - function which compares two strings
+ * @s1: this is the first string
+ * @s2: this is the second string
+ * Return: the value after comparism has been done
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -62,11 +62,11 @@ int _strcmp(char *s1, char *s2)
 
 
 /**
- * *_strcpy - copies the string pointed to by src
+ * *_strcpy - copies the string which is pointed to by src
  * including the terminating null byte (\0)
  * to the buffer pointed to by dest
- * @dest: pointer to the buffer in which we copy the string
- * @src: string to be copied
+ * @dest: points to the buffer from wehere the string was copied
+ * @src: points to the string to be copied
  *
  * Return: the pointer to dest
  */
@@ -91,8 +91,8 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
- * @src: the source string
+ * _strdup - function that duplicates a string
+ * @src: pointer to the source string
  * Return: pointer to the duplicate
  */
 char *_strdup(char *src)

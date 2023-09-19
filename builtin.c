@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * builtin_handler - checks for and execute builtin commands
- * @command: pointer to input command
- * Return: 1 (success) 0 (failed)
+ * builtin_handler - function that checks for and execute builtin commands
+ * @command: points to the input command
+ * Return: 1 if successful, and 0 if failed
  */
 int builtin_handler(char  *command)
 {
@@ -20,14 +20,53 @@ int builtin_handler(char  *command)
 }
 
 /**
- * _terminate - teminates the shell process
+ * _atoi - converts a string to an integer
+ * @s: string to be converted
+ * Return: the int converted from the string
+ */
+int _atoi(char *s)
+{
+	int i, d, n, len, f, digit;
+
+	i = d = n = f = len = digit =  0;
+
+	while (s[len] != '\0')
+		len++;
+
+	while (i < len && f == 0)
+	{
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
+		}
+		i++;
+	}
+
+	if (f == 0)
+		return (0);
+
+	return (n);
+}
+
+/**
+ * _terminate - function that teminates the shell process
  * Return: void
  */
 void _terminate(void)
 {
 	int status;
 
-	status = atoi(_strtok(NULL, " \t\n\r"));
+	status = _atoi(_strtok(NULL, " \t\n\r"));
 
 	if (status)
 		exit(status);
@@ -36,8 +75,8 @@ void _terminate(void)
 }
 
 /**
- * _env - prints out the enviroment variables
- * Return: number of varibles read
+ * _env - prints out the environment variables
+ * Return: number of varibles that was read
  */
 int _env(void)
 {
