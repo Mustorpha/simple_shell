@@ -2,8 +2,8 @@
 
 /**
  * wcnt - counts the number of words in a string
- * @s: the target string
- * Return: count number
+ * @s: this is the target string
+ * Return: number of count
  */
 int wcnt(const char *s)
 {
@@ -21,8 +21,8 @@ int wcnt(const char *s)
 }
 
 /**
- * _get_command - gets input from the terminal
- * Return: pointer to the input
+ * _get_command - function that gets input from the terminal
+ * Return: returns the pointer to the input
  */
 char *_get_command(void)
 {
@@ -45,8 +45,8 @@ char *_get_command(void)
 }
 
 /**
- * _tokenizer - spilts the input string into an array of strings
- * @str: pointer to the input string
+ * _tokenizer - spilts input string into an array of strings
+ * @str: points to the input string
  * Return: number of extracted string
  */
 int _tokenizer(char *str)
@@ -92,11 +92,11 @@ int _tokenizer(char *str)
 }
 
 /**
- * _getline - gets the user input from the terminal
- * @buff: pointer to the extracted command string
- * @n: size of charaters extracted
- * @fd: file descriptor of the source
- * Return: number of character extracted
+ * _getline - function that gets the user input from the terminal
+ * @buff: points to the extracted command string
+ * @n: size of charaters extracted in bytes
+ * @fd: file descriptor of the source file
+ * Return: number of extracted characters
  */
 ssize_t _getline(char **buff, size_t *n, int fd)
 {
@@ -143,10 +143,10 @@ ssize_t _getline(char **buff, size_t *n, int fd)
 }
 
 /**
- * _strtok - splits a string into parts
- * @str: pointer to the string
+ * _strtok - splits string into parts
+ * @str: points to the string
  * @delim: preffered delimeter
- * Return: string part in order
+ * Return: string parts in order
  */
 char *_strtok(char *str, const char *delim)
 {
