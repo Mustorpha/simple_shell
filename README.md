@@ -1,4 +1,7 @@
 # Simple Unix Shell Documentation
+ALX project by Julien Barbier
+Weight: 10
+Team: Mustorpha Jamiu and Victor Ukpongette
 
 ## Introduction
 
