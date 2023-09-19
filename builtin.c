@@ -9,7 +9,7 @@ int builtin_handler(char  *command)
 {
 	if (!(_strcmp(command, "exit")))
 	{
-		_terminate(getpid());
+		_terminate();
 		return (1);
 	}
 	if (!(_strcmp(command, "env")))
@@ -21,12 +21,18 @@ int builtin_handler(char  *command)
 
 /**
  * _terminate - teminates the shell process
- * @process: the shell process ID
  * Return: void
  */
-void _terminate(pid_t process)
+void _terminate(void)
 {
-	exit(process);
+	int status;
+
+	status = atoi(_strtok(NULL, " \t\n\r"));
+
+	if (status)
+		exit(status);
+	else
+		exit(EXIT_SUCCESS);
 }
 
 /**

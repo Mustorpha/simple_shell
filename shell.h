@@ -18,7 +18,7 @@
 
 extern char **environ;
 
-char *_get_command();
+char *_get_command(void);
 int _tokenizer(char *str);
 void _print(char *str);
 void _printerr(char *str);
@@ -30,7 +30,7 @@ char *_strcpy(char *dest, char *src);
 char *_getenv(char *name);
 void _execute_path(char *command, char **args);
 char *_strdup(char *src);
-void _terminate(pid_t process);
+void _terminate(void);
 int _env(void);
 int builtin_handler(char *command);
 ssize_t _getline(char **buff, size_t *n, int fd);

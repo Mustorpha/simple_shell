@@ -154,7 +154,6 @@ char *_strtok(char *str, const char *delim)
 	char *token;
 	char *delimPtr;
 
-	lastToken = NULL;
 	if (str != NULL)
 		lastToken = str;
 	else if (lastToken == NULL)
