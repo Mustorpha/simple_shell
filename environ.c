@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _getenv - search if an enviroment exist
- * @name: the enviroment name
- * Return: a pointer to the enviroment value
+ * _getenv - searches for an environment to check its existence
+ * @name: this is the name of the the environment
+ * Return: returns a pointer to the value of environment
  */
 char *_getenv(char *name)
 {
