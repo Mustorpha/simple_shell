@@ -2,7 +2,7 @@
 
 /**
  * _print - prints a string to the standard output
- * @str: the output string
+ * @str: points to the output string
  * Return: void
  */
 
