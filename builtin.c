@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * builtin_handler - checks for and execute builtin commands
- * @command: pointer to input command
- * Return: 1 (success) 0 (failed)
+ * builtin_handler - function that checks for and execute builtin commands
+ * @command: points to the input command
+ * Return: 1 if successful, and 0 if failed
  */
 int builtin_handler(char  *command)
 {
@@ -20,7 +20,7 @@ int builtin_handler(char  *command)
 }
 
 /**
- * _terminate - teminates the shell process
+ * _terminate - function that teminates the shell process
  * @process: the shell process ID
  * Return: void
  */
@@ -30,8 +30,8 @@ void _terminate(pid_t process)
 }
 
 /**
- * _env - prints out the enviroment variables
- * Return: number of varibles read
+ * _env - prints out the environment variables
+ * Return: number of varibles that was read
  */
 int _env(void)
 {
