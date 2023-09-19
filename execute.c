@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _execute_path - execute command using path
- * @command: pointer to command requested command
+ * _execute_path - executes command using path
+ * @command: points to command requested command
  * @args: pointer to the array of commands
  * Return: void
  */
