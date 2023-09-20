@@ -136,5 +136,4 @@ void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 ssize_t get_new_len(char *line);
 void logical_ops(char *line, ssize_t *new_len);
-
 #endif
