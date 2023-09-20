@@ -1,10 +1,5 @@
 #include "shell.h"
 
-void free_args(char **args, char **front);
-char *get_pid(void);
-char *get_env_value(char *beginning, int len);
-void variable_replacement(char **args, int *exe_ret);
-
 /**
  * free_args - Frees up memory taken by args.
  * @args: A null-terminated double pointer containing commands/arguments.
@@ -22,12 +17,7 @@ void free_args(char **args, char **front)
 
 /**
  * get_pid - Gets the current process ID.
- * Description: Opens the stat file, a space-delimited file containing
- *              information about the current process. The PID is the
- *              first word in the file. The function reads the PID into
- *              a buffer and replace the space at the end with a \0 byte.
- *
- * Return: The current process ID or NULL on failure.
+  * Return: The current process ID or NULL on failure.
  */
 char *get_pid(void)
 {
@@ -60,11 +50,7 @@ char *get_pid(void)
  * get_env_value - Gets the value corresponding to an environmental variable.
  * @beginning: The environmental variable to search for.
  * @len: The length of the environmental variable to search for.
- *
  * Return: If the variable is not found - an empty string.
- *         Otherwise - the value of the environmental variable.
- *
- * Description: Variables are stored in the format VARIABLE=VALUE.
  */
 char *get_env_value(char *beginning, int len)
 {
