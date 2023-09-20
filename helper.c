@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * free_args - Frees up memory taken by args.
- * @args: A null-terminated double pointer containing commands/arguments.
+ * free_args - Frees memory taken by args.
+ * @args: A null-terminated double pointer which contains commands/arguments.
  * @front: A double pointer to the beginning of args.
  */
 void free_args(char **args, char **front)
@@ -16,7 +16,7 @@ void free_args(char **args, char **front)
 }
 
 /**
- * get_pid - Gets the current process ID.
+ * get_pid - Fetches the current process ID.
   * Return: The current process ID or NULL on failure.
  */
 char *get_pid(void)
