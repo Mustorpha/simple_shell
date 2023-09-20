@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * num_len - Counts the digit length of a number.
- * @num: The number to measure.
+ * num_len - Count digit length of a number.
+ * @num: The number to be measured.
  * Return: The digit length.
  */
 int num_len(int num)
@@ -29,8 +29,8 @@ int num_len(int num)
 }
 
 /**
- * _itoa - Converts an integer to a string.
- * @num: The integer.
+ * _itoa - Converts integer to a string.
+ * @num: The integer to be converted
  * Return: The converted string.
  */
 char *_itoa(int num)
@@ -67,7 +67,7 @@ char *_itoa(int num)
 
 
 /**
- * create_error - Writes a custom error message to stderr.
+ * create_error - Writes custom error message to stderr.
  * @args: An array of arguments.
  * @err: The error value.
  * Return: The error value.
