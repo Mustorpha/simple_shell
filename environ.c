@@ -72,7 +72,7 @@ int _setenv(char *name, char *value, int overwrite)
 			else
 			{
 				free(env_var);
-				fre(env_copy);
+				free(env_copy);
 				return (1);
 			}
 		}
