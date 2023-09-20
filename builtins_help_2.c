@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * help_env - Displays information on shellby builtin command 'env'.
+ * help_env - Displays all the information on shellby builtin command 'env'.
  */
 void help_env(void)
 {
@@ -11,7 +11,7 @@ void help_env(void)
 }
 
 /**
- * help_setenv - Displays information on shellby builtin command 'setenv'.
+ * help_setenv - Displays  all the information on shellby builtin command 'setenv'.
  */
 void help_setenv(void)
 {
@@ -25,7 +25,7 @@ void help_setenv(void)
 }
 
 /**
- * help_unsetenv - Displays information on shellby builtin command
+ * help_unsetenv - Displays all the information on shellby builtin command
  * 'unsetenv'.
  */
 void help_unsetenv(void)
