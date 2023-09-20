@@ -39,6 +39,7 @@ int _atoi(char *s);
 int _envsize(void);
 int _setenv(char *name, char *value, int overwrite);
 int _unsetenv(char *name);
+int _modenv(char *new_env);
 
 /* SHELL HEADER  */
 
