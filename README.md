@@ -5,7 +5,7 @@ Team: Mustorpha Jamiu and Victor Ukpongette
 
 ## Introduction
 
-This Unix Shell Program is a simple command-line interface (CLI) tool that allows users to interact with the Unix operating system. It provides basic functionality for running commands and managing files and directories.
+This Unix Shell Program is a simple command-line interface (CLI) tool which allows users to perfectly interact with the Unix operating system. It provides basic functionality for running commands and managing files and directories.
 
 ## Getting Started
 
