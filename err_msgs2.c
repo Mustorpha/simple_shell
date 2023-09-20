@@ -2,7 +2,7 @@
 
 /**
  * error_126 - Creates an error message due to permission denied failures.
- * @args: An array of arguments passed to command.
+ * @args: An array of arguments which is passed to command.
  * Return: The error string.
  */
 char *error_126(char **args)
