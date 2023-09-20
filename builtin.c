@@ -7,15 +7,24 @@
  */
 int builtin_handler(char  *command)
 {
+	char *name, *value = NULL;
+
 	if (!(_strcmp(command, "exit")))
 	{
 		_terminate();
-		return (1);
+		return (-1);
 	}
 	if (!(_strcmp(command, "env")))
-	{
 		return (_env());
+	if (!(_strcmp(command, "setenv")))
+	{
+		name = _strtok(NULL, " ");
+		value = _strtok(NULL, " ");
+
+		return (_setenv(name, value, 1));
 	}
+	if (!(_strcmp(command, "unsetenv")))
+		return (_unsetenv(_strtok(NULL, " ")));
 	return (0);
 }
 
@@ -65,9 +74,12 @@ int _atoi(char *s)
 void _terminate(void)
 {
 	int status;
+	char *stat_value = NULL;
 
-	status = _atoi(_strtok(NULL, " \t\n\r"));
+	stat_value = (char *)_strtok(NULL, " \t\n\r");
 
+	if (stat_value)
+		status = _atoi(stat_value);
 	if (status)
 		exit(status);
 	else

@@ -35,6 +35,10 @@ int _env(void);
 int builtin_handler(char *command);
 ssize_t _getline(char **buff, size_t *n, int fd);
 char *_strtok(char *str, const char *delim);
+int _atoi(char *s);
+int _envsize(void);
+int _setenv(char *name, char *value, int overwrite);
+int _unsetenv(char *name);
 
 /* SHELL HEADER  */
 
