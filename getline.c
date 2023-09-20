@@ -5,7 +5,6 @@
  * @ptr: A pointer to the memory previously allocated.
  * @old_size: The size in bytes of the allocated space for ptr.
  * @new_size: The size in bytes for the new memory block.
- *
  * Return: If new_size == old_size - ptr.
  *         If new_size == 0 and ptr is not NULL - NULL.
  *         Otherwise - a pointer to the reallocated memory block.
@@ -88,7 +87,6 @@ void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
  * @lineptr: A buffer to store the input.
  * @n: The size of lineptr.
  * @stream: The stream to read from.
- *
  * Return: The number of bytes read.
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
