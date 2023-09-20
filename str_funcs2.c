@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _strchr - Locates a character in a string.
- * @s: The string to be searched.
+ * _strchr - Function which locates a character in a string.
+ * @s: The string to be searched for.
  * @c: The character to be located.
  * Return: If c is found - a pointer to the first occurence.
  */
@@ -20,7 +20,7 @@ char *_strchr(char *s, char c)
 }
 
 /**
- * _strspn - Gets the length of a prefix substring.
+ * _strspn - Fetches the length of a prefix substring.
  * @s: The string to be searched.
  * @accept: The prefix to be measured.
  * Return: The number of bytes in s which
@@ -46,7 +46,7 @@ int _strspn(char *s, char *accept)
 }
 
 /**
- * _strcmp - Compares two strings.
+ * _strcmp - Function that compares two strings.
  * @s1: The first string to be compared.
  * @s2: The second string to be compared.
  * Return: Positive byte difference
@@ -67,8 +67,8 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * _strncmp - Compare two strings.
- * @s1: Pointer to a string.
- * @s2: Pointer to a string.
+ * @s1: Points to a string.
+ * @s2: Points to a string.
  * @n: The first n bytes of the strings to compare.
  * Return: Less than 0 if s1 is shorter than s2.
  */
