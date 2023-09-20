@@ -16,7 +16,7 @@ void free_args(char **args, char **front)
 }
 
 /**
- * get_pid - Fetches the current process ID.
+ * get_pid - Obtains the current process ID.
   * Return: The current process ID or NULL on failure.
  */
 char *get_pid(void)
@@ -50,7 +50,7 @@ char *get_pid(void)
  * get_env_value - Gets the value corresponding to an environmental variable.
  * @beginning: The environmental variable to search for.
  * @len: The length of the environmental variable to search for.
- * Return: If the variable is not found - an empty string.
+ * Return: If variable is not found - an empty string.
  */
 char *get_env_value(char *beginning, int len)
 {
@@ -81,8 +81,8 @@ char *get_env_value(char *beginning, int len)
 
 /**
  * variable_replacement - Handles variable replacement.
- * @line: A double pointer containing the command and arguments.
- * @exe_ret: A pointer to the return value of the last executed command.
+ * @line: A double pointer which contains the command and arguments.
+ * @exe_ret: A pointer to return value of the last executed command.
  *
  * Description: Replaces $$ with the current PID, $? with the return value
  *              of the last executed program, and envrionmental variables
