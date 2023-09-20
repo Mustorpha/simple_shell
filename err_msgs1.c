@@ -128,8 +128,8 @@ char *error_2_cd(char **args)
 }
 
 /**
- * error_2_syntax - Creates error message for syntax errors.
- * @args: An array of arguments passed to the command.
+ * error_2_syntax - Creates error message involving syntax errors.
+ * @args: An array of arguments passed to command.
  * Return: The error string.
  */
 char *error_2_syntax(char **args)
