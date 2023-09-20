@@ -85,7 +85,7 @@ void set_alias(char *var_name, char *value)
 
 /**
  * print_alias - Prints alias in the format name='value'.
- * @alias: Pointer which points to an alias.
+ * @alias: Points to an alias.
  * Return: void
  */
 void print_alias(alias_t *alias)
@@ -105,7 +105,7 @@ void print_alias(alias_t *alias)
 	free(alias_string);
 }
 /**
- * replace_aliases - Goes through the arguments and replace any matching alias
+ * replace_aliases - Goes through arguments and replace any matching alias
  * @args: 2D pointer to the arguments
  * Return: 2D pointer to the arguments
  */
