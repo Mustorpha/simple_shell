@@ -1,181 +1,143 @@
 #include "shell.h"
 
-/**
- * wcnt - counts the number of words in a string
- * @s: this is the target string
- * Return: number of count
- */
-int wcnt(const char *s)
-{
-	int i = 0;
-	int cnt = 0;
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
-	while (s[i])
+/**
+ * _realloc - Reallocates a memory block using malloc and free.
+ * @ptr: A pointer to the memory previously allocated.
+ * @old_size: The size in bytes of the allocated space for ptr.
+ * @new_size: The size in bytes for the new memory block.
+ *
+ * Return: If new_size == old_size - ptr.
+ *         If new_size == 0 and ptr is not NULL - NULL.
+ *         Otherwise - a pointer to the reallocated memory block.
+ */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+	void *mem;
+	char *ptr_copy, *filler;
+	unsigned int index;
+
+	if (new_size == old_size)
+		return (ptr);
+
+	if (ptr == NULL)
 	{
-		if (s[i] == ' ' && s[i + 1] != '\0')
-			cnt++;
-		i++;
+		mem = malloc(new_size);
+		if (mem == NULL)
+			return (NULL);
+
+		return (mem);
 	}
 
-	return (++cnt);
+	if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	ptr_copy = ptr;
+	mem = malloc(sizeof(*ptr_copy) * new_size);
+	if (mem == NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	filler = mem;
+
+	for (index = 0; index < old_size && index < new_size; index++)
+		filler[index] = *ptr_copy++;
+
+	free(ptr);
+	return (mem);
 }
 
 /**
- * _get_command - function that gets input from the terminal
- * Return: returns the pointer to the input
+ * assign_lineptr - Reassigns the lineptr variable for _getline.
+ * @lineptr: A buffer to store an input string.
+ * @n: The size of lineptr.
+ * @buffer: The string to assign to lineptr.
+ * @b: The size of buffer.
  */
-char *_get_command(void)
+void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
 {
-	char *buff;
-	size_t buff_size;
-	ssize_t len;
-
-	len = _getline(&buff, &buff_size, STDIN_FILENO);
-
-	if (len == -1)
+	if (*lineptr == NULL)
 	{
-		perror("Error: ");
-		exit(EXIT_FAILURE);
+		if (b > 120)
+			*n = b;
+		else
+			*n = 120;
+		*lineptr = buffer;
 	}
-	if (buff[len - 1] == '\n')
+	else if (*n < b)
 	{
-		buff[len - 1] = '\0';
-	}
-	return (buff);
-}
-
-/**
- * _tokenizer - spilts input string into an array of strings
- * @str: points to the input string
- * Return: number of extracted string
- */
-int _tokenizer(char *str)
-{
-	char **arg = NULL;
-	size_t ind = 0;
-	char *token;
-	int cnt;
-	pid_t exe_process;
-
-	cnt = wcnt(str);
-	token = _strtok(str, " ");
-	if (builtin_handler(token))
-		return (0);
-	arg = malloc(sizeof(char *) * (cnt + 1));
-
-	if (!arg)
-	{
-		perror("Error: ");
-		exit(EXIT_FAILURE);
-	}
-
-	while (token != NULL)
-	{
-		arg[ind++] = token;
-		token = _strtok(NULL, " ");
-	}
-	arg[ind] = NULL;
-
-	if (fork() == 0)
-	{
-		exe_process = getpid();
-
-		execve(str, arg, NULL);
-		_execute_path(str, arg);
-		exit(EXIT_FAILURE);
+		if (b > 120)
+			*n = b;
+		else
+			*n = 120;
+		*lineptr = buffer;
 	}
 	else
 	{
-		wait(&exe_process);
+		_strcpy(*lineptr, buffer);
+		free(buffer);
 	}
-	return (0);
 }
 
 /**
- * _getline - function that gets the user input from the terminal
- * @buff: points to the extracted command string
- * @n: size of charaters extracted in bytes
- * @fd: file descriptor of the source file
- * Return: number of extracted characters
+ * _getline - Reads input from a stream.
+ * @lineptr: A buffer to store the input.
+ * @n: The size of lineptr.
+ * @stream: The stream to read from.
+ *
+ * Return: The number of bytes read.
  */
-ssize_t _getline(char **buff, size_t *n, int fd)
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	size_t index = 0;
-	char c;
-	ssize_t result;
-	char *buffer;
+	static ssize_t input;
+	ssize_t ret;
+	char c = 'x', *buffer;
+	int r;
 
-	*n = 64;
-	if (buff == NULL || n == NULL || fd < 0)
+	if (input == 0)
+		fflush(stream);
+	else
 		return (-1);
-	buffer = (char *)malloc(*n);
-	if (buffer == NULL)
+	input = 0;
+
+	buffer = malloc(sizeof(char) * 120);
+	if (!buffer)
 		return (-1);
-	while (1)
+
+	while (c != '\n')
 	{
-		result = read(fd, &c, 1);
-		if (result < 0)
+		r = read(STDIN_FILENO, &c, 1);
+		if (r == -1 || (r == 0 && input == 0))
 		{
 			free(buffer);
 			return (-1);
 		}
-		if (result == 0 || c == '\n')
+		if (r == 0 && input != 0)
 		{
-			buffer[index] = '\0';
+			input++;
 			break;
 		}
-		else
-			buffer[index] = c;
-		index++;
-		if (index >= *n - 1)
-		{
-			*n *= 2;
-			buffer = (char *)realloc(buffer, *n);
-			if (buffer == NULL)
-			{
-				free(buffer);
-				return (-1);
-			}
-		}
+
+		if (input >= 120)
+			buffer = _realloc(buffer, input, input + 1);
+
+		buffer[input] = c;
+		input++;
 	}
-	*buff = buffer;
-	return (index);
-}
+	buffer[input] = '\0';
 
-/**
- * _strtok - splits string into parts
- * @str: points to the string
- * @delim: preffered delimeter
- * Return: string parts in order
- */
-char *_strtok(char *str, const char *delim)
-{
-	static char *lastToken;
-	char *token;
-	char *delimPtr;
+	assign_lineptr(lineptr, n, buffer, input);
 
-	if (str != NULL)
-		lastToken = str;
-	else if (lastToken == NULL)
-		return (NULL);
-	token = lastToken;
-
-	while (*lastToken)
-	{
-		delimPtr = (char *)delim;
-
-		while (*delimPtr)
-		{
-			if (*lastToken == *delimPtr)
-			{
-				*lastToken = '\0';
-				lastToken++;
-				return (token);
-			}
-			delimPtr++;
-		}
-		lastToken++;
-	}
-	lastToken = NULL;
-	return (token);
+	ret = input;
+	if (r != 0)
+		input = 0;
+	return (ret);
 }
