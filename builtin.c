@@ -1,14 +1,8 @@
 #include "shell.h"
-int (*get_builtin(char *command))(char **args, char **front);
-int shellby_exit(char **args, char **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
 
 /**
- * get_builtin - Matches a command with a corresponding
- *               shellby builtin function.
+ * get_builtin - match builtin commands
  * @command: The command to match.
- *
  * Return: A function pointer to the corresponding builtin.
  */
 int (*get_builtin(char *command))(char **args, char **front)
@@ -34,16 +28,10 @@ int (*get_builtin(char *command))(char **args, char **front)
 }
 
 /**
- * shellby_exit - Causes normal process termination
- *                for the shellby shell.
+ * shellby_exit - terminates a process
  * @args: An array of arguments containing the exit value.
  * @front: A double pointer to the beginning of args.
- *
- * Return: If there are no arguments - -3.
- *         If the given exit value is invalid - 2.
- *         O/w - exits with the given status value.
- *
- * Description: Upon returning -3, the program exits back in the main function.
+ * Return: If there are no arguments
  */
 int shellby_exit(char **args, char **front)
 {
@@ -81,11 +69,8 @@ int shellby_exit(char **args, char **front)
 /**
  * shellby_cd - Changes the current directory of the shellby process.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
- *
- * Return: If the given string is not a directory - 2.
- *         If an error occurs - -1.
- *         Otherwise - 0.
+ * @front: A double pointer to the beginning of args
+ * Return: If the given string is not a directory
  */
 int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 {
@@ -162,10 +147,8 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 /**
  * shellby_help - Displays information about shellby builtin commands.
  * @args: An array of arguments.
- * @front: A pointer to the beginning of args.
- *
- * Return: If an error occurs - -1.
- *         Otherwise - 0.
+ * @front: A pointer to the beginning of args
+ * Return: If an error occurs
  */
 int shellby_help(char **args, char __attribute__((__unused__)) **front)
 {
