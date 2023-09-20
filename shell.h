@@ -1,5 +1,5 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef SHELL_H_
+#define SHELL_H_
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
@@ -131,4 +131,5 @@ void help_unsetenv(void);
 void help_history(void);
 
 int proc_file_commands(char *file_path, int *exe_ret);
-#endif /* _SHELL_H_ */
+
+#endif
