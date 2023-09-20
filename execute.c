@@ -15,15 +15,15 @@ void _execute_path(char *command, char **args)
 
 	path = _getenv("PATH");
 	path_copy = _strdup(path);
-	token = strtok(path_copy, ":");
+	token = _strtok(path_copy, ":");
 
 	while (token != NULL)
 	{
 		_strcpy(cmd_path, token);
-		strcat(cmd_path, "/");
-		strcat(cmd_path, command);
+		_strcat(cmd_path, "/");
+		_strcat(cmd_path, command);
 		execve(cmd_path, args, NULL);
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 	}
 	_printerr("No such file or directory\n");
 	free(path_copy);
