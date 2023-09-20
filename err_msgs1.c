@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * error_env - Creates an error message for shellby_env errors.
- * @args: An array of arguments passed to the command.
+ * error_env - Creates error message for shellby_env errors.
+ * @args: This is an array of arguments passed to the command.
  * Return: The error string.
  */
 char *error_env(char **args)
@@ -35,7 +35,7 @@ char *error_env(char **args)
 }
 
 /**
- * error_1 - Creates an error message for shellby_alias errors.
+ * error_1 - Creates error message for shellby_alias errors.
  * @args: An array of arguments passed to the command.
  * Return: The error string.
  */
@@ -57,7 +57,7 @@ char *error_1(char **args)
 }
 
 /**
- * error_2_exit - Creates an error message for shellby_exit errors.
+ * error_2_exit - Creates error message for shellby_exit errors.
  * @args: An array of arguments passed to the command.
  * Return: The error string.
  */
@@ -90,7 +90,7 @@ char *error_2_exit(char **args)
 }
 
 /**
- * error_2_cd - Creates an error message for shellby_cd errors.
+ * error_2_cd - Creates error message for shellby_cd errors.
  * @args: An array of arguments passed to the command.
  * Return: The error string.
  */
@@ -128,7 +128,7 @@ char *error_2_cd(char **args)
 }
 
 /**
- * error_2_syntax - Creates an error message for syntax errors.
+ * error_2_syntax - Creates error message for syntax errors.
  * @args: An array of arguments passed to the command.
  * Return: The error string.
  */
