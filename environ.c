@@ -36,7 +36,7 @@ char **_copyenv(void)
 }
 
 /**
- * free_env - Frees the the environment copy.
+ * free_env - Frees the environment copy.
  */
 void free_env(void)
 {
@@ -48,8 +48,8 @@ void free_env(void)
 }
 
 /**
- * _getenv - Gets an environmental variable from the PATH.
- * @var: The name of the environmental variable to get.
+ * _getenv - Gets environmental variable from the PATH.
+ * @var: The name of environmental variable to get.
  * Return: If the environmental variable does not exist - NULL.
  */
 char **_getenv(const char *var)
