@@ -35,7 +35,7 @@ char *_strcpy(char *dest, const char *src)
 /**
  * _strcat - Concantenates two strings.
  * @dest: Points to destination string.
- * @src: Pointer to source string.
+ * @src: Points to source string.
  * Return: Pointer to destination string.
  */
 char *_strcat(char *dest, const char *src)
@@ -59,7 +59,7 @@ char *_strcat(char *dest, const char *src)
  * _strncat - Concantenates two strings where n number
  * @dest: Points to destination string.
  * @src: Pointer to source string.
- * @n: n bytes to copy from src.
+ * @n: number of bytes to copy from src.
  * Return: Pointer to destination string.
  */
 char *_strncat(char *dest, const char *src, size_t n)
