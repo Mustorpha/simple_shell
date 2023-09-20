@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * shellby_env - Prints the current environment.
- * @args: An array of arguments passed to the shell.
+ * shellby_env - This fuction prints the current environment.
+ * @args: An array of arguments passed to shell.
  * @front: A double pointer to the beginning of args.
  * Return: If an error occurs
  */
@@ -26,8 +26,8 @@ int shellby_env(char **args, char __attribute__((__unused__)) **front)
 
 /**
  * shellby_setenv - Changes or adds an environmental variable to the PATH.
- * @args: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of args.
+ * @args: An array of arguments passed to shell.
+ * @front: A double pointer to the starting point of args.
  * Description: args[1] is the name of the new or existing PATH variable
  * Return: If an error occurs
  */
@@ -77,8 +77,8 @@ int shellby_setenv(char **args, char __attribute__((__unused__)) **front)
 
 /**
  * shellby_unsetenv - Deletes an environmental variable from the PATH.
- * @args: An array of arguments passed to the shell.
- * @front: A double pointer to the beginning of args.
+ * @args: An array of arguments passed to shell.
+ * @front: A double pointer to the starting point of args.
  * Return: If an error occurs
  */
 int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front)
