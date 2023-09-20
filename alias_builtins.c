@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * shellby_alias - prints all aliases, specific aliases, or sets an alias.
+ * shellby_alias - prints all the aliases, specific aliases, or sets an alias.
  * @args: An array of arguments.
- * @front: A double pointer to the beginning of args.
+ * @front: A double pointer which points to the beginning of args.
  * Return: 1 (success) -1 (failed)
  */
 int shellby_alias(char **args, char __attribute__((__unused__)) **front)
@@ -46,7 +46,7 @@ int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 }
 
 /**
- * set_alias - sets values for aliases
+ * set_alias - function that sets values for aliases
  * @var_name: Name of the alias.
  * @value: Value of the alias. First character is a '='
  * Return: Void
@@ -84,8 +84,8 @@ void set_alias(char *var_name, char *value)
 }
 
 /**
- * print_alias - Prints the alias in the format name='value'.
- * @alias: Pointer to an alias.
+ * print_alias - Prints alias in the format name='value'.
+ * @alias: Pointer which points to an alias.
  * Return: void
  */
 void print_alias(alias_t *alias)
