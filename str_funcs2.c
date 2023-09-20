@@ -69,7 +69,7 @@ int _strcmp(char *s1, char *s2)
  * _strncmp - Compare two strings.
  * @s1: Points to a string.
  * @s2: Points to a string.
- * @n: The first n bytes of the strings to compare.
+ * @n: The first n bytes of the strings to be compared.
  * Return: Less than 0 if s1 is shorter than s2.
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
